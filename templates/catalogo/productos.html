@@ -1,0 +1,65 @@
+{% load static catalogo_extras %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nido · Tienda de muebles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'catalogo/styles.css' %}">
+</head>
+<body>
+  <header class="encabezado">
+    <a class="marca" href="/">NIDO<span>.</span></a>
+    <p>Muebles que hacen hogar</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="etiqueta">COLECCION 2026</p>
+      <h1>Tu hogar, <em>a tu manera.</em></h1>
+      <p class="introduccion">Piezas pensadas para vivir lento, durar mucho y sentirse siempre como casa.</p>
+    </section>
+
+    {% if error_conexion %}
+      <p class="alerta" role="alert">{{ error_conexion }}</p>
+    {% endif %}
+
+    <section class="catalogo" aria-labelledby="titulo-catalogo">
+      <div class="titulo-catalogo">
+        <h2 id="titulo-catalogo">Nuestros muebles</h2>
+        <span>{{ productos|length }} productos</span>
+      </div>
+
+      {% if productos %}
+        <div class="rejilla-productos">
+          {% for producto in productos %}
+            <article class="tarjeta-producto">
+              <div class="contenedor-imagen">
+                {% if producto.destacado %}<span class="insignia">Destacado</span>{% endif %}
+                <img src="{{ producto.imagen_url }}" alt="{{ producto.nombre }}" loading="lazy">
+              </div>
+              <div class="contenido-producto">
+                <p class="categoria">{{ producto.categoria }}</p>
+                <h3>{{ producto.nombre }}</h3>
+                <p class="descripcion">{{ producto.descripcion }}</p>
+                <div class="pie-producto">
+                  <strong>{{ producto.precio|cop }} COP</strong>
+                  <span>{% if producto.stock %}{{ producto.stock }} disponibles{% else %}Agotado{% endif %}</span>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% elif not error_conexion %}
+        <p class="vacio">Aun no hay productos. Ejecuta <code>py manage.py sembrar_productos</code>.</p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer>© 2026 Nido · Diseno consciente para tu hogar</footer>
+</body>
+</html>
+
