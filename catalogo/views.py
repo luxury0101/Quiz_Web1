@@ -16,7 +16,6 @@ def lista_productos(request) -> HttpResponse:
         if settings.MONGODB_CONNECTION_ERROR:
             raise PyMongoError(settings.MONGODB_CONNECTION_ERROR)
 
-        # Fuerza una comprobacion de conectividad antes de consultar la coleccion.
         get_connection().admin.command("ping")
         productos = Producto.objects()
         return render(request, "catalogo/productos.html", {"productos": productos})
