@@ -23,4 +23,3 @@ El archivo `.env` se carga automaticamente y contiene `MONGODB_URI`. No se debe 
 
 - `py manage.py sembrar_productos`: crea o actualiza los productos de ejemplo en MongoDB.
 - `py manage.py check`: valida la configuracion de Django.
-

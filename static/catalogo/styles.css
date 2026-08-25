@@ -38,4 +38,3 @@ h3 { font-family: "Playfair Display", serif; font-size: 1.55rem; font-weight: 60
 footer { padding: 30px; text-align: center; border-top: 1px solid var(--linea); color: var(--suave); font-size: .78rem; }
 @media (max-width: 800px) { .rejilla-productos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero { padding: 65px 0 50px; } }
 @media (max-width: 520px) { .encabezado { padding: 20px; } .encabezado p { display: none; } main { padding: 0 20px 50px; } .rejilla-productos { grid-template-columns: 1fr; } }
-

@@ -17,4 +17,3 @@ class Producto(Document):
         "ordering": ["-destacado", "nombre"],
         "indexes": ["categoria", "nombre"],
     }
-

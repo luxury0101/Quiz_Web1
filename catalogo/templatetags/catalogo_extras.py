@@ -8,4 +8,3 @@ register = template.Library()
 def cop(valor):
     """Formatea un precio como pesos colombianos, sin decimales."""
     return f"${valor:,.0f}".replace(",", ".")
-

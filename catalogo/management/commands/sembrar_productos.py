@@ -71,4 +71,3 @@ class Command(BaseCommand):
             Producto.objects(nombre=nombre).update_one(upsert=True, **actualizados)
 
         self.stdout.write(self.style.SUCCESS(f"{len(PRODUCTOS)} productos disponibles en MongoDB."))
-
